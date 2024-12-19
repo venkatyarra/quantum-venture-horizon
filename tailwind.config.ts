@@ -19,6 +19,7 @@ export default {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
         quantum: {
           dark: "#1A1F2C",
           primary: "#9b87f5",
