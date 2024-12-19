@@ -1,27 +1,35 @@
 import { motion } from 'framer-motion';
-import { Cpu, Menu, X } from 'lucide-react';
+import { Tool, Menu, X, Plus, User } from 'lucide-react';
 import { useState } from 'react';
+import { Button } from './ui/button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-quantum-dark/80 backdrop-blur-sm border-b border-quantum-primary/20">
+    <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <Cpu className="w-6 h-6 text-quantum-primary" />
-            <span className="text-xl font-semibold text-quantum-primary">Quantum Tech</span>
+            <Tool className="w-6 h-6 text-primary" />
+            <span className="text-xl font-semibold text-primary">ToolShare</span>
           </div>
           
-          <div className="hidden md:flex space-x-8">
-            <NavLink href="#overview">Overview</NavLink>
-            <NavLink href="#applications">Applications</NavLink>
-            <NavLink href="#future">Future</NavLink>
+          <div className="hidden md:flex items-center space-x-4">
+            <NavLink href="#browse">Browse Tools</NavLink>
+            <NavLink href="#my-tools">My Tools</NavLink>
+            <NavLink href="#borrowed">Borrowed</NavLink>
+            <Button className="flex items-center gap-2">
+              <Plus className="w-4 h-4" />
+              Add Tool
+            </Button>
+            <Button variant="ghost" size="icon">
+              <User className="w-5 h-5" />
+            </Button>
           </div>
 
           <button 
-            className="md:hidden text-quantum-primary"
+            className="md:hidden text-foreground"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X /> : <Menu />}
@@ -34,12 +42,18 @@ const Navbar = () => {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-quantum-dark/95 border-b border-quantum-primary/20"
+          className="md:hidden bg-background border-b"
         >
           <div className="px-4 py-4 space-y-4">
-            <MobileNavLink href="#overview" onClick={() => setIsOpen(false)}>Overview</MobileNavLink>
-            <MobileNavLink href="#applications" onClick={() => setIsOpen(false)}>Applications</MobileNavLink>
-            <MobileNavLink href="#future" onClick={() => setIsOpen(false)}>Future</MobileNavLink>
+            <MobileNavLink href="#browse" onClick={() => setIsOpen(false)}>Browse Tools</MobileNavLink>
+            <MobileNavLink href="#my-tools" onClick={() => setIsOpen(false)}>My Tools</MobileNavLink>
+            <MobileNavLink href="#borrowed" onClick={() => setIsOpen(false)}>Borrowed</MobileNavLink>
+            <div className="pt-4 border-t">
+              <Button className="w-full flex items-center justify-center gap-2">
+                <Plus className="w-4 h-4" />
+                Add Tool
+              </Button>
+            </div>
           </div>
         </motion.div>
       )}
@@ -50,7 +64,7 @@ const Navbar = () => {
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a 
     href={href}
-    className="text-gray-300 hover:text-quantum-primary transition-colors"
+    className="text-muted-foreground hover:text-foreground transition-colors"
   >
     {children}
   </a>
@@ -67,7 +81,7 @@ const MobileNavLink = ({
 }) => (
   <a 
     href={href}
-    className="block text-gray-300 hover:text-quantum-primary transition-colors"
+    className="block text-muted-foreground hover:text-foreground transition-colors"
     onClick={onClick}
   >
     {children}
