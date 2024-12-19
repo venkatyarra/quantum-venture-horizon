@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Tool, Menu, X, Plus, User } from 'lucide-react';
+import { Wrench, Menu, X, Plus, User } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
 
@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <Tool className="w-6 h-6 text-primary" />
+            <Wrench className="w-6 h-6 text-primary" />
             <span className="text-xl font-semibold text-primary">ToolShare</span>
           </div>
           

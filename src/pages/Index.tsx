@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Tool, Users, Calendar, CheckCircle } from 'lucide-react';
+import { Wrench, Users, Calendar, CheckCircle } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navbar from '@/components/Navbar';
@@ -98,7 +98,7 @@ const Index = () => {
                       </div>
                       {tool.borrowedBy && (
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Tool className="w-4 h-4" />
+                          <Wrench className="w-4 h-4" />
                           <span>Borrowed by: {tool.borrowedBy}</span>
                         </div>
                       )}
